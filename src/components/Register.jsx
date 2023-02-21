@@ -65,7 +65,7 @@ const Register = () => {
         <label>
           Password: 
           <input
-            name="pasword"
+            name="password"
             type="text"
             value={password}
             minLength="8"
@@ -80,7 +80,7 @@ const Register = () => {
         <label>
           Confirm Password: 
           <input
-            name="pasword"
+            name="password"
             type="text"
             value={confirmPassword}
             required
