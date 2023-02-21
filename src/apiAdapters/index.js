@@ -1,5 +1,3 @@
-import React from "react";
-
 const BASE =
   "https://strangers-things.herokuapp.com/api/2301-ftb-et-web-ft/posts";
 export const getAllPostWithFetch = async () => {
@@ -26,14 +24,14 @@ export const getIndividualPost = async (id) => {
   }
 };
 
-export const registerAccount = async () => {
+export const registerAccount = async (username, password) => {
   try {
     const response = await fetch(
       "https://strangers-things.herokuapp.com/api/2301-ftb-et-web-ft/users/register",
       {
         method: "POST",
         headers: {
-          "Content-Type": "application/json; charset=UTF-8",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           user: {
@@ -44,6 +42,7 @@ export const registerAccount = async () => {
       }
     );
     const result = await response.json();
+    console.log(result, "api adapter")
     return result;
   } catch (error) {
     console.log(error);

@@ -10,20 +10,29 @@ const Register = () => {
   async function makeProfile(username, password) {
     try {
       const result = await registerAccount(username, password);
+      console.log(username)
+      console.log(typeof username)
       setResponse(result);
+      console.log(response)
       setUsername("");
       setPassword("");
       setConfirmPassword("");
     } catch (error) {
-      console.log(error);
+        console.log(error)
     }
   }
 
-//   useEffect(() => {
-//     makeProfile();
-//   }, []);
+  useEffect(() => {
+    // response !== {}? localStorage.setItem("token", `${response.data.token}`) : null
+    console.log(localStorage)
+    if (localStorage.length === 0 && response.data.token !== undefined) {
+        localStorage.setItem("token", JSON.stringify(response.data.token))
+    }
+  }, [response]);
 
-console.log(typeof username)
+
+
+
   return (
     <div className="register-container">
       <h2>REGISTER</h2>
