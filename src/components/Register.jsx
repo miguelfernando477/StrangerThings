@@ -1,77 +1,90 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { registerAccount } from "../apiAdapters";
 
 const Register = () => {
-let [newUsername, setNewUsername] = useState('')
-let [newPassword, setNewPassword] = useState('')
-let [confirmPassword, setConfirmPassword] = useState('')
-let [response, setResponse] = useState({})
+  let [username, setUsername] = useState('');
+  let [password, setPassword] = useState('');
+  let [confirmPassword, setConfirmPassword] = useState("");
+  let [response, setResponse] = useState({});
 
-    async function makeProfile(username, password) {
-        try {
-            const result = await registerAccount(username, password, confirmPassword)
-            setResponse(result)
-            setNewUsername('')
-            setNewPassword('')
-            setConfirmPassword('')
-        } catch (error) {
-            console.log(error)
-        }
+  async function makeProfile(username, password) {
+    try {
+      const result = await registerAccount(username, password);
+      setResponse(result);
+      setUsername("");
+      setPassword("");
+      setConfirmPassword("");
+    } catch (error) {
+      console.log(error);
     }
+  }
 
-    useEffect(() => {
-        makeProfile()
-    },[])
+//   useEffect(() => {
+//     makeProfile();
+//   }, []);
 
-return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        makeProfile(newUsername, newPassword);
-      }}
-    >
-      <lable>
-        Username:
-        <input
-          name="username"
-          type="text"
-          value={newUsername}
-          onChange={(e) => {
-            console.log(e.target.value);
-            setNewUsername(e.target.value);
-          }}
-        />
-      </lable>
+console.log(typeof username)
+  return (
+    <div className="register-container">
+      <h2>REGISTER</h2>
+      <form
+        className="register-form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (password !== confirmPassword) {
+            alert("Passwords don't match");
+          } else {
+            makeProfile(username, password);
+          }
+        }}
+      >
+        <label>
+          Username: 
+          <input
+            name="username"
+            type="text"
+            value={username}
+            minLength="6"
+            required
+            onChange={(e) => {
+              console.log(e.target.value);
+              setUsername(e.target.value);
+            }}
+          />
+        </label>
 
-      <lable>
-        Password:
-        <input
-          name="pasword"
-          type="text"
-          value={newPassword}
-          onChange={(e) => {
-            console.log(e.target.value);
-            setNewPassword(e.target.value);
-          }}
-        />
-      </lable>
+        <label>
+          Password: 
+          <input
+            name="pasword"
+            type="text"
+            value={password}
+            minLength="8"
+            required
+            onChange={(e) => {
+              console.log(e.target.value);
+              setPassword(e.target.value);
+            }}
+          />
+        </label>
 
-      <lable>
-        Confirm Password:
-        <input
-          name="pasword"
-          type="text"
-          value={confirmPassword}
-          onChange={(e) => {
-            console.log(e.target.value);
-            setConfirmPassword(e.target.value);
-          }}
-        />
-      </lable>
-      <button type="submit">SIGN UP</button>
-    </form>
-)
+        <label>
+          Confirm Password: 
+          <input
+            name="pasword"
+            type="text"
+            value={confirmPassword}
+            required
+            onChange={(e) => {
+              console.log(e.target.value);
+              setConfirmPassword(e.target.value);
+            }}
+          />
+        </label>
+        <button type="submit">SIGN UP</button>
+      </form>
+    </div>
+  );
+};
 
-}
-
-export default Register
+export default Register;
