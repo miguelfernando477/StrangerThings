@@ -42,7 +42,7 @@ export const registerAccount = async (username, password) => {
       }
     );
     const result = await response.json();
-    console.log(result, "api adapter")
+    console.log(result, "api adapter");
     return result;
   } catch (error) {
     console.log(error);
@@ -50,26 +50,46 @@ export const registerAccount = async (username, password) => {
 };
 
 export const loginAccount = async (username, password) => {
-    try {
-      const response = await fetch(
-        "https://strangers-things.herokuapp.com/api/2301-ftb-et-web-ft/users/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
+  try {
+    const response = await fetch(
+      "https://strangers-things.herokuapp.com/api/2301-ftb-et-web-ft/users/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user: {
+            username: username,
+            password: password,
           },
-          body: JSON.stringify({
-            user: {
-              username: username,
-              password: password,
-            },
-          }),
-        }
-      );
-      const result = await response.json();
-      console.log(result, "api adapter")
-      return result;
-    } catch (error) {
-      console.log(error);
-    }
-  };
+        }),
+      }
+    );
+    const result = await response.json();
+    console.log(result, "api adapter");
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getProfile = async () => {
+  try {
+    const response = await fetch(
+      "https://strangers-things.herokuapp.com/api/2301-ftb-et-web-ft/users/me",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+      }
+    );
+    const result = await response.json();
+    console.log("response", response);
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
