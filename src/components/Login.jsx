@@ -22,7 +22,7 @@ function Login() {
   useEffect(() => {
     // response !== {}? localStorage.setItem("token", `${response.data.token}`) : null
     console.log(localStorage)
-    if (localStorage.length === 0 && response.data.token !== undefined) {
+    if ( response.data.token !== undefined) {
         localStorage.setItem("token", JSON.stringify(response.data.token))
     }
   }, [response]);
