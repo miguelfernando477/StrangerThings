@@ -82,7 +82,7 @@ export const getProfile = async (token) => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer"+" "+`${token}`,
+          Authorization: "Bearer" + " " + `${token}`,
         },
       }
     );
@@ -102,14 +102,13 @@ export const newPost = async (title, description, price) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-         
+          Authorization: "Bearer" + " " + `${token}`,
         },
         body: JSON.stringify({
           user: {
             title: title,
             description: description,
             price: price,
-            // need to add willDeliver
           },
         }),
       }
@@ -122,8 +121,7 @@ export const newPost = async (title, description, price) => {
   }
 };
 
-
-// test 
+// test
 export const getTestProfile = async (token) => {
   try {
     const response = await fetch(
@@ -132,7 +130,7 @@ export const getTestProfile = async (token) => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer"+" "+`${token}`,
+          Authorization: "Bearer" + " " + `${token}`,
         },
       }
     );

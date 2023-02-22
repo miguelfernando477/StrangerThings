@@ -5,7 +5,7 @@ import { newPost } from "../apiAdapters";
 function NewPost() {
   let [newTitle, setNewTitle] = useState("");
   let [newDescription, setNewDescription] = useState("");
-  let [newPrice, setNewPrice] = useState("");
+  let [newPrice, setNewPrice] = useState(0);
   let [response, setResponse] = useState({});
 
   async function sendPost(title, description, price) {
