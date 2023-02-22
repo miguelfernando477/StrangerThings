@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { loginAccount } from "../apiAdapters";
+import { Link } from "react-router-dom";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -30,7 +31,9 @@ function Login() {
   }, [response]);
 
   return (
-    <form
+    <div id="login-container">
+      <h1>Log In</h1>
+    <form id="loginBox"
       onSubmit={(e) => {
         e.preventDefault();
         sendLoginToDatabase(username, password);
@@ -67,6 +70,7 @@ function Login() {
         </label>
       <button type="submit">LOG IN</button>
     </form>
+</div>
   );
 }
 
