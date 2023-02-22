@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { deletePost, getAllPostWithFetch } from "../apiAdapters";
+import { deletePost, getAllPostWithFetch, newMessage } from "../apiAdapters";
 import { Link, useNavigate } from "react-router-dom";
 
 const AllPosts = () => {
   let [posts, setPost] = useState([]);
+  let [message, setMessage] = useState('')
   const navigate = useNavigate();
   async function getPosts() {
     try {
@@ -28,6 +29,7 @@ const AllPosts = () => {
   async function sendMessage(id, message) {
     try {
       const result = await newMessage(id, message);
+      console.log(result)
       localStorage.setItem(result.content);
       setMessage("");
     } catch (error) {
@@ -39,7 +41,7 @@ const AllPosts = () => {
     getPosts();
   }, []);
 
-  console.log(posts);
+
 
   return (
     <div id="all-post">
@@ -64,7 +66,7 @@ const AllPosts = () => {
                   </div>
                 ) : (
                   <div>
-                    <input />
+                    <input name='message' type='text' value={message} onChange={(event) => {setMessage(event.target.value)}}/>
                     <button onClick={() => sendMessage(post._id, message)}>
                       Message Seller
                     </button>

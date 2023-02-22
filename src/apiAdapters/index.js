@@ -144,7 +144,7 @@ export const deletePost = async (id) => {
 
 export const newMessage = async (id, content) => {
   try {
-    const response = await fetch(`${BASE}/${id}`, {
+    const response = await fetch(`${BASE}/${id}/messages`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
