@@ -93,3 +93,30 @@ export const getProfile = async () => {
     console.log(error);
   }
 };
+
+export const newPost = async (title, description, price) => {
+  try {
+    const response = await fetch(
+      "https://strangers-things.herokuapp.com/api/2301-ftb-et-web-ft/posts",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+         
+        },
+        body: JSON.stringify({
+          user: {
+            title: title,
+            description: description,
+            price: price,
+          },
+        }),
+      }
+    );
+    const result = await response.json();
+    console.log(result, "result");
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
