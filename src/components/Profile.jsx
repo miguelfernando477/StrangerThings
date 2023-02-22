@@ -30,16 +30,17 @@ useEffect(() => {
         <div>
             <h1>User</h1>
             <div>
-            {profilePost.length
+            {profilePost.length 
         ? profilePost.map((post, idx) => {
             return (
+                post.active ? 
               <div id="postBox" key={idx}>
                 <h1>{post.title}</h1>
                 <p>{post.description}</p>
                 <h3>Price: {post.price}</h3>
                 <h3>Seller: {post.author.username}</h3>
                 <h3>Location: {post.location}</h3>
-              </div>
+              </div> : null
             );
           })
         : null}
