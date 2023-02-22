@@ -1,13 +1,16 @@
-import react, { useState } from "react";
+import react, { useState , useEffect} from "react";
 import { getProfile } from "../apiAdapters";
+import { isLoggedIn } from "../HelperFunctions";
 
 const Profile = () => {
     let [profilePost, setProfilePost] = useState([])
     let [messages, setMessages] = useState([])
 
-async function sss() {
+async function displayProfile(token) {
     try {
-        const result = await getProfile()
+        const token = localStorage.getItem('token')
+        const result = await getProfile(token)
+        console.log(result)
         setProfilePost(result.posts)
         console.log(profilePost)
         setMessages(result.messages)
@@ -16,11 +19,18 @@ async function sss() {
     }
 }
 
+useEffect(() => {
+    if (isLoggedIn) {
+        displayProfile();
+    }
+  }, []);
+
 
     return (
         <div>
             <h1>User</h1>
             <div>{profilePost}</div>
+            <div>{messages}</div>
         </div>
     )
 }

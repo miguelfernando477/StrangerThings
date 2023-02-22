@@ -1,5 +1,5 @@
 import React from "react";
-import { logOut } from "../HelperFuntions";
+import { logOut } from "../HelperFunctions";
 
 const Navbar = () => {
   return (

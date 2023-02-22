@@ -74,7 +74,7 @@ export const loginAccount = async (username, password) => {
   }
 };
 
-export const getProfile = async () => {
+export const getProfile = async (token) => {
   try {
     const response = await fetch(
       "https://strangers-things.herokuapp.com/api/2301-ftb-et-web-ft/users/me",
