@@ -121,23 +121,16 @@ export const newPost = async (title, description, price) => {
   }
 };
 
-// test
-export const getTestProfile = async (token) => {
+export const deletePost = async (id) => {
   try {
-    const response = await fetch(
-      "https://strangers-things.herokuapp.com/api/2301-ftb-et-web-ft/test/me",
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${localStorage.getItem("token")}`,
-        },
+  const response = await fetch(`${BASE}/${id}`, {
+    method: "DELETE",
+    headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`,
       }
-    );
-    const result = await response.json();
-    console.log("response", response);
-    return result;
+    })
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
