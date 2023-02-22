@@ -82,7 +82,7 @@ export const getProfile = async (token) => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          "Authorization": "Bearer"+" "+`${token}`,
         },
       }
     );
@@ -109,12 +109,35 @@ export const newPost = async (title, description, price) => {
             title: title,
             description: description,
             price: price,
+            // need to add willDeliver
           },
         }),
       }
     );
     const result = await response.json();
     console.log(result, "result");
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+// test 
+export const getTestProfile = async (token) => {
+  try {
+    const response = await fetch(
+      "https://strangers-things.herokuapp.com/api/2301-ftb-et-web-ft/test/me",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer"+" "+`${token}`,
+        },
+      }
+    );
+    const result = await response.json();
+    console.log("response", response);
     return result;
   } catch (error) {
     console.log(error);

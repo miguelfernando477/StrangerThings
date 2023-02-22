@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { registerAccount } from "../apiAdapters";
+import {Link} from 'react-router-dom'
 
 const Register = () => {
   let [username, setUsername] = useState('');
@@ -10,10 +11,7 @@ const Register = () => {
   async function makeProfile(username, password) {
     try {
       const result = await registerAccount(username, password);
-      console.log(username)
-      console.log(typeof username)
       setResponse(result);
-      console.log(response)
       setUsername("");
       setPassword("");
       setConfirmPassword("");
@@ -31,11 +29,9 @@ const Register = () => {
   }, [response]);
 
 
-
-
   return (
     <div className="register-container">
-      <h2>REGISTER</h2>
+      <h1>Register</h1>
       <form
         className="register-form"
         onSubmit={(e) => {
@@ -91,6 +87,7 @@ const Register = () => {
           />
         </label>
         <button type="submit">SIGN UP</button>
+        <Link to="../login">Already have an account?</Link>
       </form>
     </div>
   );
