@@ -5,13 +5,13 @@ import { Link } from "react-router-dom";
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [response, setResponse] = useState({});
+ 
 
   async function sendLoginToDatabase(username, password) {
     try {
       const result = await loginAccount(username, password)
       console.log("you are logged in");
-      setResponse(result);
+      localStorage.setItem("token", result)
       setUsername("");
       setPassword("");
     } catch (error) {
@@ -20,15 +20,15 @@ function Login() {
   }
 
 
-  useEffect(() => {
-    // response !== {}? localStorage.setItem("token", `${response.data.token}`) : null
-    console.log(localStorage)
-    if ( response.data !== undefined) {
-        // localStorage.setItem("token", JSON.stringify(response.data.token))
-        localStorage.setItem('token', JSON.stringify(response.data.token))
-        console.log(response)
-    }
-  }, [response]);
+  // useEffect(() => {
+  //   // response !== {}? localStorage.setItem("token", `${response.data.token}`) : null
+  //   console.log(localStorage)
+  //   if ( response.data !== undefined) {
+  //       // localStorage.setItem("token", JSON.stringify(response.data.token))
+  //       localStorage.setItem('token', JSON.stringify(response.data.token))
+  //       console.log(response)
+  //   }
+  // }, [response]);
 
   return (
     <div id="login-container">

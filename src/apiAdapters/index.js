@@ -68,7 +68,7 @@ export const loginAccount = async (username, password) => {
     );
     const result = await response.json();
     console.log(result, "api adapter");
-    return result;
+    return result.data.token;
   } catch (error) {
     console.log(error);
   }
@@ -82,7 +82,7 @@ export const getProfile = async (token) => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer" + " " + `${token}`,
+          "Authorization": `Bearer ${localStorage.getItem("token")}`,
         },
       }
     );
@@ -102,10 +102,10 @@ export const newPost = async (title, description, price) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer" + " " + `${token}`,
+          "Authorization": `Bearer ${localStorage.getItem("token")}`,
         },
         body: JSON.stringify({
-          user: {
+          post: {
             title: title,
             description: description,
             price: price,
@@ -130,7 +130,7 @@ export const getTestProfile = async (token) => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer" + " " + `${token}`,
+          "Authorization": `Bearer ${localStorage.getItem("token")}`,
         },
       }
     );

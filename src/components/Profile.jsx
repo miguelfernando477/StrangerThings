@@ -1,17 +1,17 @@
 import react, { useState , useEffect} from "react";
-import { getProfile, getTestProfile } from "../apiAdapters";
+import { getProfile } from "../apiAdapters";
 import { isLoggedIn } from "../HelperFunctions";
 
 const Profile = () => {
     let [profilePost, setProfilePost] = useState([])
     let [messages, setMessages] = useState([])
 
-async function displayProfile(token) {
+async function displayProfile() {
     try {
-        // const result = await getProfile(token)
-        const result = await getTestProfile(token)
+        const result = await getProfile()
         console.log(result)
         setProfilePost(result.data.posts)
+        console.log(result.data.posts)
         setMessages(result.data.messages)
     } catch (error) {
         console.log(error)
@@ -21,7 +21,7 @@ async function displayProfile(token) {
 useEffect(() => {
     if (isLoggedIn) {
         const token = localStorage.getItem('token')
-        displayProfile(JSON.parse(token));  // JSON.parse around the token fixed the error
+        displayProfile(token);  // JSON.parse around the token fixed the error
     }
   }, []);
   

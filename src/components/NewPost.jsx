@@ -6,13 +6,13 @@ function NewPost() {
   let [newTitle, setNewTitle] = useState("");
   let [newDescription, setNewDescription] = useState("");
   let [newPrice, setNewPrice] = useState(0);
-  let [response, setResponse] = useState({});
+
 
   async function sendPost(title, description, price) {
     try {
       console.log("you have posted a new article", title, description, price);
       const result = await newPost(title, description, price);
-      setResponse(result);
+      localStorage.setItem(result.title, result.description, result.price)
       setNewTitle('');
       setNewDescription('');
       setNewPrice('');
@@ -21,10 +21,6 @@ function NewPost() {
     }
   }
 
-  useEffect(() => {
-    localStorage.setItem(response.title, response.description, response.price);
-  }, [response])
-  
 
   return (
     <form
