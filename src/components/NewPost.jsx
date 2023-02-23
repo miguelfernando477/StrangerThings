@@ -55,7 +55,7 @@ function NewPost() {
         Price:
         <input
           name="price"
-          type="text"
+          type="number"
           value={newPrice}
           onChange={(event) => {
             setNewPrice(event.target.value);

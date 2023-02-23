@@ -156,6 +156,8 @@ export const newMessage = async (id, content) => {
         }
       })
     })
+    const result = await response.json();
+    return result
   } catch (error) {
     console.log(error)
   }

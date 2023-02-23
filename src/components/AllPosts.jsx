@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const AllPosts = () => {
   let [posts, setPost] = useState([]);
-  let [message, setMessage] = useState('')
+  let [message, setMessage] = useState("");
   const navigate = useNavigate();
   async function getPosts() {
     try {
@@ -29,7 +29,7 @@ const AllPosts = () => {
   async function sendMessage(id, message) {
     try {
       const result = await newMessage(id, message);
-      console.log(result)
+      console.log(result);
       localStorage.setItem(result.content);
       setMessage("");
     } catch (error) {
@@ -40,7 +40,6 @@ const AllPosts = () => {
   useEffect(() => {
     getPosts();
   }, []);
-
 
 
   return (
@@ -66,10 +65,17 @@ const AllPosts = () => {
                   </div>
                 ) : (
                   <div>
-                    <input name='message' type='text' value={message} onChange={(event) => {setMessage(event.target.value)}}/>
+                    {/* <input name='message' type='text' value={message} onChange={(event) => {setMessage(event.target.value)}}/>
                     <button onClick={() => sendMessage(post._id, message)}>
                       Message Seller
-                    </button>
+                    </button> */}
+
+                    <input type="text" name="message" onChange={(event) => {setMessage(event.target.value)}}/>
+                    <input
+                      type="submit"
+                      value="Message Seller"
+                      onClick={() => sendMessage(post._id, message)}
+                    />
                   </div>
                 )}
               </div>
