@@ -6,8 +6,9 @@ export const logIn = () => {
   
   export const logOut= () => {
     localStorage.removeItem('token')
+    localStorage.removeItem("username")
   }
   
   export const isLoggedIn = () => {
-    return localStorage.getItem('token' !== null)
+    return localStorage.getItem('token')!== null
   }

@@ -61,6 +61,7 @@ const AllPosts = () => {
         value={searchTerm}
         onChange={searchHandle}
       />
+      <Link to="new-post">(Add Post)</Link>
       {postsToDisplay.length
         ? postsToDisplay.map((post, idx) => {
             return (

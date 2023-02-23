@@ -6,16 +6,18 @@ function NewPost() {
   let [newTitle, setNewTitle] = useState("");
   let [newDescription, setNewDescription] = useState("");
   let [newPrice, setNewPrice] = useState(0);
+  let [newLocation, setNewLocation] = useState ("")
 
 
-  async function sendPost(title, description, price) {
+  async function sendPost(title, description, price, location) {
     try {
-      console.log("you have posted a new article", title, description, price);
-      const result = await newPost(title, description, price);
-      localStorage.setItem(result.title, result.description, result.price)
+      console.log("you have posted a new article", title, description, price, location);
+      const result = await newPost(title, description, price, location);
+      localStorage.setItem(result.title, result.description, result.price, result.location)
       setNewTitle('');
       setNewDescription('');
       setNewPrice('');
+      setNewLocation('');
     } catch (error) {
       console.log(error);
     }
@@ -26,7 +28,7 @@ function NewPost() {
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        sendPost(newTitle, newDescription, newPrice);
+        sendPost(newTitle, newDescription, newPrice, newLocation);
       }}
     >
       <label>
@@ -34,6 +36,7 @@ function NewPost() {
         <input
           name="title"
           type="text"
+          required
           value={newTitle}
           onChange={(event) => {
             setNewTitle(event.target.value);
@@ -45,6 +48,7 @@ function NewPost() {
         <input
           name="description"
           type="text"
+          required
           value={newDescription}
           onChange={(event) => {
             setNewDescription(event.target.value);
@@ -56,9 +60,21 @@ function NewPost() {
         <input
           name="price"
           type="number"
+          required
           value={newPrice}
           onChange={(event) => {
             setNewPrice(event.target.value);
+          }}
+        />
+      </label>
+      <label>
+        Location:
+        <input
+          name="location"
+          type="text"
+          value={newLocation}
+          onChange={(event) => {
+            setNewLocation(event.target.value);
           }}
         />
       </label>

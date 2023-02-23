@@ -1,32 +1,36 @@
 import React, { useState, useEffect } from "react";
 import { registerAccount } from "../apiAdapters";
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 const Register = () => {
   let [username, setUsername] = useState('');
   let [password, setPassword] = useState('');
   let [confirmPassword, setConfirmPassword] = useState("");
-  let [response, setResponse] = useState({});
+  const navigate = useNavigate()
 
   async function makeProfile(username, password) {
     try {
       const result = await registerAccount(username, password);
-      setResponse(result);
+      console.log(result)
+      localStorage.setItem("token", result.data.token)
       setUsername("");
       setPassword("");
       setConfirmPassword("");
+      alert("Thanks for signing up for our service")
+      navigate("/login")
     } catch (error) {
+      alert("User already exists, please login instead.")
         console.log(error)
     }
   }
 
-  useEffect(() => {
-    // response !== {}? localStorage.setItem("token", `${response.data.token}`) : null
-    console.log(localStorage)
-    if (localStorage.length === 0 && response.data.token !== undefined) {
-        localStorage.setItem("token", JSON.stringify(response.data.token))
-    }
-  }, [response]);
+  // useEffect(() => {
+  //   // response !== {}? localStorage.setItem("token", `${response.data.token}`) : null
+  //   console.log(localStorage)
+  //   if (localStorage.length === 0 && response.data.token !== undefined) {
+  //       localStorage.setItem("token", JSON.stringify(response.data.token))
+  //   }
+  // }, [response]);
 
 
   return (

@@ -9,7 +9,6 @@ const Navbar = () => {
       <Link className="navButton" to="/">Post</Link>
       <Link className="navButton" to='profile'>Profile</Link>
       <Link className="navButton" to="login">Login</Link>
-      <Link className="navButton" to="register">Sign Up</Link>
       <button onClick={logOut} >Log Out</button>
       </nav>
     </div>
