@@ -25,6 +25,8 @@ const Profile = () => {
     }
   }, []);
 
+console.log(localStorage.getItem('username') )
+
   return (
     <div>
       <h1>User</h1>
@@ -47,12 +49,13 @@ const Profile = () => {
         {messages.length
           ? messages.map((message, idx) => {
               return (
+                message.fromUser.username === localStorage.getItem('username') ?
                 <div id="messageBox" key={idx}>
                     <h3>Post: {message.post.title}</h3>
                     <h4>From: {message.fromUser.username}</h4>
                   <h4>Message: {message.content}</h4>
 
-                </div>
+                </div> : null
               );
             })
           : null}

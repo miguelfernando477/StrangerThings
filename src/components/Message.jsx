@@ -1,14 +1,14 @@
 import react, { useState } from "react";
 import { newMessage } from "../apiAdapters";
 
-function Message() {
+function Message(props) {
+  const id = props.id;
   let [message, setMessage] = useState("");
 
-  async function sendMessage(id, message) {
+  async function sendMessage(message) {
     try {
       const result = await newMessage(id, message);
-      localStorage.setItem(result.content)
-      setMessage('')
+      setMessage("");
     } catch (error) {
       console.log(error);
     }
@@ -16,24 +16,21 @@ function Message() {
 
   return (
     <div>
-      <h1>Message</h1>
-
       <form
-      onSubmit={(event) => {
-        event.preventDefault();
-        sendMessage(message);
-        }}>
-        <label>
-          message:
-          <input
-            name="message"
-            type="text"
-            value={message}
-            onChange={(event) => {
-              setMessage(event.target.value);
-            }}
-          />
-        </label>
+        onSubmit={(event) => {
+          event.preventDefault();
+          sendMessage(message);
+        }}
+      >
+        <input
+          name="message"
+          type="text"
+          value={message}
+          onChange={(event) => {
+            setMessage(event.target.value);
+          }}
+        />
+
         <button type="submit">Send Message</button>
       </form>
     </div>

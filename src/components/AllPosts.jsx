@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { deletePost, getAllPostWithFetch, newMessage } from "../apiAdapters";
 import { Link, useNavigate } from "react-router-dom";
+import {Message} from './'
 
 const AllPosts = () => {
   let [posts, setPost] = useState([]);
-  let [message, setMessage] = useState("");
+
+  let [change, setChange] = useState(true)
   const navigate = useNavigate();
   async function getPosts() {
     try {
@@ -26,20 +28,11 @@ const AllPosts = () => {
     }
   }
 
-  async function sendMessage(id, message) {
-    try {
-      const result = await newMessage(id, message);
-      console.log(result);
-      localStorage.setItem(result.content);
-      setMessage("");
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
+ 
   useEffect(() => {
     getPosts();
   }, []);
+
 
 
   return (
@@ -65,17 +58,7 @@ const AllPosts = () => {
                   </div>
                 ) : (
                   <div>
-                    {/* <input name='message' type='text' value={message} onChange={(event) => {setMessage(event.target.value)}}/>
-                    <button onClick={() => sendMessage(post._id, message)}>
-                      Message Seller
-                    </button> */}
-
-                    <input type="text" name="message" onChange={(event) => {setMessage(event.target.value)}}/>
-                    <input
-                      type="submit"
-                      value="Message Seller"
-                      onClick={() => sendMessage(post._id, message)}
-                    />
+                   <Message id={post._id}/>
                   </div>
                 )}
               </div>

@@ -12,6 +12,7 @@ function Login() {
       const result = await loginAccount(username, password)
       console.log("you are logged in");
       localStorage.setItem("token", result)
+      localStorage.setItem('username', username)
       setUsername("");
       setPassword("");
     } catch (error) {
