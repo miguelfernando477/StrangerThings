@@ -75,7 +75,7 @@ export const loginAccount = async (username, password) => {
     );
     const result = await response.json();
     console.log(result, "api adapter");
-    return (result);
+    return result;
   } catch (error) {
     console.log(error);
   }
@@ -101,7 +101,7 @@ export const getProfile = async (token) => {
   }
 };
 
-export const newPost = async (title, description, price, location) => {
+export const newPost = async (title, description, price) => {
   try {
     const response = await fetch(
       "https://strangers-things.herokuapp.com/api/2301-ftb-et-web-ft/posts",
@@ -116,7 +116,6 @@ export const newPost = async (title, description, price, location) => {
             title: title,
             description: description,
             price: price,
-            location: location,
           },
         }),
       }

@@ -1,28 +1,40 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { newPost } from "../apiAdapters";
 
 function NewPost() {
   let [newTitle, setNewTitle] = useState("");
   let [newDescription, setNewDescription] = useState("");
   let [newPrice, setNewPrice] = useState(0);
-  let [newLocation, setNewLocation] = useState ("")
+  let [newLocation, setNewLocation] = useState("");
 
+  const navigate = useNavigate();
 
   async function sendPost(title, description, price, location) {
     try {
-      console.log("you have posted a new article", title, description, price, location);
+      console.log(
+        "you have posted a new article",
+        title,
+        description,
+        price,
+        location
+      );
       const result = await newPost(title, description, price, location);
-      localStorage.setItem(result.title, result.description, result.price, result.location)
-      setNewTitle('');
-      setNewDescription('');
-      setNewPrice('');
-      setNewLocation('');
+      localStorage.setItem(
+        result.title,
+        result.description,
+        result.price,
+        result.location
+      );
+      setNewTitle("");
+      setNewDescription("");
+      setNewPrice("");
+      setNewLocation("");
+      navigate("../");
     } catch (error) {
       console.log(error);
     }
   }
-
 
   return (
     <form
