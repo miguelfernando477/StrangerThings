@@ -11,8 +11,9 @@ const Profile = () => {
       const result = await getProfile();
       console.log(result);
       setProfilePost(result.data.posts);
-      console.log(result.data.posts);
+      console.log(profilePost);
       setMessages(result.data.messages);
+      console.log(messages);
     } catch (error) {
       console.log(error);
     }
@@ -21,11 +22,9 @@ const Profile = () => {
   useEffect(() => {
     if (isLoggedIn) {
       const token = localStorage.getItem("token");
-      displayProfile(token); // JSON.parse around the token fixed the error
+      displayProfile(token);
     }
   }, []);
-
-console.log(localStorage.getItem('username') )
 
   return (
     <div>
@@ -40,16 +39,37 @@ console.log(localStorage.getItem('username') )
                   <h3>Price: {post.price}</h3>
                   <h3>Seller: {post.author.username}</h3>
                   <h3>Location: {post.location}</h3>
+                  <section>{post.messages.map((msg, idx) => {
+                    return (
+                    <p>{msg.content}</p>)
+                  })}</section>
                 </div>
               ) : null;
             })
           : null}
       </div>
       <div>
+        <h1>Messages From Me</h1>
         {messages.length
           ? messages.map((message, idx) => {
               return (
                 message.fromUser.username === localStorage.getItem('username') ?
+                <div id="messageBox" key={idx}>
+                    <h3>Post: {message.post.title}</h3>
+                    <h4>From: {message.fromUser.username}</h4>
+                  <h4>Message: {message.content}</h4>
+
+                </div> : null
+              );
+            })
+          : null}
+      </div>
+      <div>
+        <h1>Messages To Me</h1>
+        {messages.length
+          ? messages.map((message, idx) => {
+              return (
+                message.fromUser.username !== localStorage.getItem('username') ?
                 <div id="messageBox" key={idx}>
                     <h3>Post: {message.post.title}</h3>
                     <h4>From: {message.fromUser.username}</h4>
