@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { deletePost, getAllPostWithFetch, newMessage } from "../apiAdapters";
 import { Link, useNavigate } from "react-router-dom";
-import {Message} from './'
+import { Message } from "./";
 
 const AllPosts = () => {
   let [posts, setPost] = useState([]);
+  let [searchTerm, setSearchTerm] = useState("");
 
-  let [change, setChange] = useState(true)
   const navigate = useNavigate();
   async function getPosts() {
     try {
@@ -28,18 +28,41 @@ const AllPosts = () => {
     }
   }
 
- 
+  function postMatches(post, text) {
+    if (
+      post.title.toLowerCase().includes(text) ||
+      post.description.toLowerCase().includes(text) ||
+      post.author.username.toLowerCase().includes(text) ||
+      post.location.toLowerCase().includes(text)
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  const filteredPosts = posts.filter((post) => postMatches(post, searchTerm));
+  const postsToDisplay = searchTerm.length ? filteredPosts : posts;
+
+  const searchHandle = (e) => {
+    setSearchTerm((e.target.value).toLowerCase());
+  };
+
   useEffect(() => {
     getPosts();
   }, []);
 
-
-
   return (
     <div id="all-post">
       <h1 id="postHeader">Posts</h1>
-      {posts.length
-        ? posts.map((post, idx) => {
+      <input
+        type="text"
+        placeholder="Search"
+        value={searchTerm}
+        onChange={searchHandle}
+      />
+      {postsToDisplay.length
+        ? postsToDisplay.map((post, idx) => {
             return (
               <div id="postBox" key={idx}>
                 <h1>{post.title}</h1>
@@ -58,7 +81,7 @@ const AllPosts = () => {
                   </div>
                 ) : (
                   <div>
-                   <Message id={post._id}/>
+                    <Message id={post._id} />
                   </div>
                 )}
               </div>
