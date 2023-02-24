@@ -22,5 +22,6 @@ const Navbar = () => {
     </div>
   );
 };
+console.log("text")
 
 export default Navbar;
