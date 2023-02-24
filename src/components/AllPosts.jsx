@@ -22,6 +22,7 @@ const AllPosts = () => {
       await deletePost(id);
       currentPosts.splice(idx, 1);
       setPost(currentPosts);
+      alert("Post has been deleted!")
       navigate("/");
     } catch (error) {
       console.log(error);

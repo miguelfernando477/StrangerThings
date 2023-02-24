@@ -101,11 +101,9 @@ function NewPost() {
             setNewLocation(event.target.value);
           }}
         />
-        <h1>Deliver</h1>
-        <label>
+        <h1>
           Willing to Deliver?
-          <input
-            className="addPostTextBox"
+          <input id="willDeliverCheckbox"
             name="willDeliver"
             type="checkbox"
             value={newWillDeliver}
@@ -113,7 +111,7 @@ function NewPost() {
               setNewWillDeliver(!newWillDeliver);
             }}
           />
-        </label>
+        </h1>
 
         <button id="addPostButton" type="submit">
           Submit

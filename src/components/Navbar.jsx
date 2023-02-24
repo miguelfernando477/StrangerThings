@@ -15,7 +15,7 @@ const Navbar = () => {
       null }
       
       {isLoggedIn() ? 
-      <button onClick={() => {logOut(); navigate("/login")}} >Log Out</button> 
+      <button id="logOutButton" onClick={() => {logOut(); navigate("/login")}} >Log Out</button> 
     :
       <Link className="navButton" to="login">Login</Link>}
       </nav>
