@@ -9,11 +9,8 @@ const Profile = () => {
   async function displayProfile() {
     try {
       const result = await getProfile();
-      console.log(result);
       setProfilePost(result.data.posts);
-      console.log(profilePost);
       setMessages(result.data.messages);
-      console.log(messages);
     } catch (error) {
       console.log(error);
     }

@@ -10,7 +10,6 @@ function Message(props) {
   async function sendMessage(message) {
     try {
       const result = await newMessage(id, message);
-      console.log(result)
       setMessage("");
       result.success ?
       alert("Message sent!") : (alert("Unauthorized users cannot send messages, please Log In") ,

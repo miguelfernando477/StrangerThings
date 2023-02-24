@@ -10,8 +10,6 @@ function Login() {
   async function sendLoginToDatabase(username, password) {
     try {
       const result = await loginAccount(username, password);
-      console.log(result.success);
-      console.log("you are logged in");
       localStorage.setItem("token", result.data.token);
       localStorage.setItem("username", username);
       setUsername("");
@@ -53,7 +51,7 @@ function Login() {
             minLength="6"
             required
             onChange={(e) => {
-              console.log(e.target.value);
+
               setUsername(e.target.value);
             }}
           />
@@ -65,7 +63,6 @@ function Login() {
             minLength="8"
             required
             onChange={(e) => {
-              console.log(e.target.value);
               setPassword(e.target.value);
             }}
           />

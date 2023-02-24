@@ -101,7 +101,7 @@ export const getProfile = async (token) => {
   }
 };
 
-export const newPost = async (title, description, price) => {
+export const newPost = async (title, description, price, location, willDeliver) => {
   try {
     const response = await fetch(
       "https://strangers-things.herokuapp.com/api/2301-ftb-et-web-ft/posts",
@@ -116,6 +116,8 @@ export const newPost = async (title, description, price) => {
             title: title,
             description: description,
             price: price,
+            location: location,
+            willDeliver: willDeliver,
           },
         }),
       }
