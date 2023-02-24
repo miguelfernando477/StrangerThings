@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { deletePost, getAllPostWithFetch, newMessage } from "../apiAdapters";
+import { deletePost, getAllPostWithFetch } from "../apiAdapters";
 import { Link, useNavigate } from "react-router-dom";
 import { Message } from "./";
 
@@ -49,6 +49,7 @@ const AllPosts = () => {
     setSearchTerm((e.target.value).toLowerCase());
   };
 
+
   useEffect(() => {
     getPosts();
   }, []);
@@ -80,6 +81,7 @@ const AllPosts = () => {
                     <button onClick={() => deletePostFromDOM(post._id, idx)}>
                       Delete
                     </button>
+                    <Link to={`edit-post/${post._id}`} state={post}><button >Edit</button></Link>
                   </div>
                 ) : (
                   <div>

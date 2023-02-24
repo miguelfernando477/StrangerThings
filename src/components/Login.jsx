@@ -22,18 +22,6 @@ function Login() {
     }
   }
 
-  // useEffect(() =>{
-  // }, [success])
-  // useEffect(() => {
-  //   // response !== {}? localStorage.setItem("token", `${response.data.token}`) : null
-  //   console.log(localStorage)
-  //   if ( response.data !== undefined) {
-  //       // localStorage.setItem("token", JSON.stringify(response.data.token))
-  //       localStorage.setItem('token', JSON.stringify(response.data.token))
-  //       console.log(response)
-  //   }
-  // }, [response]);
-
   return (
     <div id="login-container">
       <h1 id="logInTitle">Log In</h1>

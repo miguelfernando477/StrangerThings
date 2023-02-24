@@ -1,41 +1,40 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { newPost } from "../apiAdapters";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { updatePost } from "../apiAdapters";
 
-function NewPost() {
-  let [newTitle, setNewTitle] = useState("");
-  let [newDescription, setNewDescription] = useState("");
-  let [newPrice, setNewPrice] = useState(0);
-  let [newLocation, setNewLocation] = useState("");
-  let [newWillDeliver, setNewWillDeliver] = useState(false);
-
+function EditPost() {
+  const location = useLocation();
   const navigate = useNavigate();
+  let [newTitle, setNewTitle] = useState(location.state.title);
+  let [newDescription, setNewDescription] = useState(location.state.description);
+  let [newPrice, setNewPrice] = useState(location.state.price);
+  let [newLocation, setNewLocation] = useState(location.state.location);
+  let [newWillDeliver, setNewWillDeliver] = useState(location.state.willDeliver);
 
-  async function sendPost(title, description, price, location, willDeliver) {
+  async function changePost(
+    id,
+    title,
+    description,
+    price,
+    location,
+    willDeliver
+  ) {
     try {
-      const result = await newPost(
+      const result = await updatePost(
+        id,
         title,
         description,
         price,
         location,
         willDeliver
       );
-      localStorage.setItem(
-        result.title,
-        result.description,
-        result.price,
-        result.location,
-        result.willDeliver
-      );
       setNewTitle("");
       setNewDescription("");
       setNewPrice("");
       setNewLocation("");
       setNewWillDeliver(false);
-      result.success
-        ? (alert("Post Added!"), navigate("/"))
-        : (alert("Unauthorized users cannot add post, please Log In"),
-          navigate("/login"));
+      alert("Post Edited!");
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
@@ -43,12 +42,13 @@ function NewPost() {
 
   return (
     <div id="addPost-container">
-      <h1 id="addPostTitle">Add Post</h1>
+      <h1 id="addPostTitle">Edit Post</h1>
       <form
         id="addPostBox"
         onSubmit={(event) => {
           event.preventDefault();
-          sendPost(
+          changePost(
+            location.state._id,
             newTitle,
             newDescription,
             newPrice,
@@ -104,7 +104,8 @@ function NewPost() {
         />
         <h1>
           Willing to Deliver?
-          <input id="willDeliverCheckbox"
+          <input
+            id="willDeliverCheckbox"
             name="willDeliver"
             type="checkbox"
             value={newWillDeliver}
@@ -125,4 +126,4 @@ function NewPost() {
   );
 }
 
-export default NewPost;
+export default EditPost;

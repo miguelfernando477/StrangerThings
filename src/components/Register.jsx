@@ -23,14 +23,6 @@ const Register = () => {
     }
   }
 
-  // useEffect(() => {
-  //   // response !== {}? localStorage.setItem("token", `${response.data.token}`) : null
-  //   console.log(localStorage)
-  //   if (localStorage.length === 0 && response.data.token !== undefined) {
-  //       localStorage.setItem("token", JSON.stringify(response.data.token))
-  //   }
-  // }, [response]);
-
   return (
     <div id="register-container">
       <h1 id="registerTitle">Register</h1>

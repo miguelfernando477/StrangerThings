@@ -10,7 +10,6 @@ const Individual = () => {
   async function getPost() {
     try {
       const result = await getIndividualPost(id);
-      console.log(result, 'result here')
       setPost(result);
     } catch (error) {
       console.log(error);

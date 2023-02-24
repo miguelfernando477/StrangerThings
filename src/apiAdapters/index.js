@@ -2,16 +2,14 @@ const BASE =
   "https://strangers-things.herokuapp.com/api/2301-ftb-et-web-ft/posts";
 export const getAllPostWithFetch = async () => {
   try {
-    const response = await fetch(BASE,
-    {
+    const response = await fetch(BASE, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem("token")}`,
-      }
-    })
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
     const data = await response.json();
-    console.log(data.data);
     return data.data;
   } catch (error) {
     console.log(error);
@@ -24,7 +22,6 @@ export const getIndividualPost = async (id) => {
       method: "GET",
     });
     const result = await response.json();
-    console.log("response", response);
     return result;
   } catch (error) {
     console.log(error);
@@ -49,7 +46,6 @@ export const registerAccount = async (username, password) => {
       }
     );
     const result = await response.json();
-    console.log(result, "api adapter");
     return result;
   } catch (error) {
     console.log(error);
@@ -74,7 +70,6 @@ export const loginAccount = async (username, password) => {
       }
     );
     const result = await response.json();
-    console.log(result, "api adapter");
     return result;
   } catch (error) {
     console.log(error);
@@ -89,19 +84,24 @@ export const getProfile = async (token) => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       }
     );
     const result = await response.json();
-    console.log("response", response);
     return result;
   } catch (error) {
     console.log(error);
   }
 };
 
-export const newPost = async (title, description, price, location, willDeliver) => {
+export const newPost = async (
+  title,
+  description,
+  price,
+  location,
+  willDeliver
+) => {
   try {
     const response = await fetch(
       "https://strangers-things.herokuapp.com/api/2301-ftb-et-web-ft/posts",
@@ -109,7 +109,7 @@ export const newPost = async (title, description, price, location, willDeliver) 
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
         body: JSON.stringify({
           post: {
@@ -123,7 +123,6 @@ export const newPost = async (title, description, price, location, willDeliver) 
       }
     );
     const result = await response.json();
-    console.log(result, "result");
     return result;
   } catch (error) {
     console.log(error);
@@ -132,17 +131,17 @@ export const newPost = async (title, description, price, location, willDeliver) 
 
 export const deletePost = async (id) => {
   try {
-  const response = await fetch(`${BASE}/${id}`, {
-    method: "DELETE",
-    headers: {
+    const response = await fetch(`${BASE}/${id}`, {
+      method: "DELETE",
+      headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem("token")}`,
-      }
-    })
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 export const newMessage = async (id, content) => {
   try {
@@ -150,17 +149,38 @@ export const newMessage = async (id, content) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem("token")}`,
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify({
         message: {
-          content: content
-        }
-      })
-    })
+          content: content,
+        },
+      }),
+    });
     const result = await response.json();
-    return result
+    return result;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
+
+export const updatePost = async (id, title, description, price, location, willDeliver) => {
+  try {
+    const response = await fetch(`${BASE}/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        post: {
+          title: title,
+          description: description,
+          price: price,
+          location: location,
+          willDeliver: willDeliver,
+        },
+      }),
+    });
+  } catch (error) {}
+};
