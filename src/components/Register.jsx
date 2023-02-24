@@ -34,10 +34,10 @@ const Register = () => {
 
 
   return (
-    <div className="register-container">
-      <h1>Register</h1>
+    <div id="register-container">
+      <h1 id="registerTitle">Register</h1>
       <form
-        className="register-form"
+        id="registerBox"
         onSubmit={(e) => {
           e.preventDefault();
           if (password !== confirmPassword) {
@@ -47,9 +47,8 @@ const Register = () => {
           }
         }}
       >
-        <label>
-          Username: 
-          <input
+     <h1>Username</h1>
+          <input className="registerTextBox"
             name="username"
             type="text"
             value={username}
@@ -60,11 +59,8 @@ const Register = () => {
               setUsername(e.target.value);
             }}
           />
-        </label>
-
-        <label>
-          Password: 
-          <input
+      <h1>Password</h1>
+          <input className="registerTextBox"
             name="password"
             type="text"
             value={password}
@@ -75,11 +71,8 @@ const Register = () => {
               setPassword(e.target.value);
             }}
           />
-        </label>
-
-        <label>
-          Confirm Password: 
-          <input
+     <h1>Confirm Password</h1>
+          <input className="registerTextBox"
             name="password"
             type="text"
             value={confirmPassword}
@@ -89,9 +82,9 @@ const Register = () => {
               setConfirmPassword(e.target.value);
             }}
           />
-        </label>
-        <button type="submit">SIGN UP</button>
-        <Link to="../login">Already have an account?</Link>
+    
+        <button id="registerButton" type="submit">SIGN UP</button>
+        <Link id="loginLink" to="../login">Already have an account? Log In Here!</Link>
       </form>
     </div>
   );

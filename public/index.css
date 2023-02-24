@@ -1,75 +1,232 @@
 body {
-    margin: 0;
+  margin: 0;
 }
-
+#StrangersThings {
+  color: white;
+  background-color: black;
+  margin: 0;
+  padding-left: 25px;
+  padding-top: 25px;
+  font-size: 50px;
+}
 #navbar {
-    justify-content: flex-end;
-    background-color: black;
+  justify-content: flex-end;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  max-height: 10%;
+  min-height: 40px;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+}
+
+.navButton {
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: x-large;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+#postBox {
+  border: none;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px -2px black;
+  background-color: rgb(230, 230, 230);
+}
+#postHeader {
+  align-items: center;
+  font-size: 100px;
+  margin-left: 25px;
+}
+#new-post-button {
+  font-size: 25px;
+  text-decoration: none;
+}
+#searchBox {
+  margin-left: 30px;
+  margin-right: 30px;
+  border: none;
+  border-bottom: 2px solid black;
+  font-size: 25px;
+}
+.profileHeaders {
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+}
+#welcomeUser {
+  font-size: 75px;
+}
+#messageBox {
+  border: none;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px -2px rgb(141, 141, 141);
+  background-color: rgb(22, 22, 22);
+  color: white;
+}
+
+#login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+#loginBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid black;
+  padding-left: 112px;
+  padding-right: 112px;
+}
+
+#logInTitle {
+  font-size: 75px;
+  color: white;
+  background-color: black;
+  padding-left: 200px;
+  padding-right: 200px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-bottom: 0;
+}
+
+.loginTextBox {
+  margin-left: 30px;
+  margin-right: 30px;
+  border: 2px solid black;
+  font-size: 25px;
+  margin-bottom: 25px;
+  margin-top: 5px;
+  text-align: center;
+}
+#loginButton {
+  color: white;
+  background-color: black;
+  border-radius: 5px;
+  font-size: 25px;
+  padding: 5px;
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+#registerLink {
+  padding-bottom: 25px;
+  font-size: 25px;
+}
+#register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+#registerBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid black;
+  padding-left: 132px;
+  padding-right: 132px;
+}
+
+#registerTitle {
+  font-size: 75px;
+  color: white;
+  background-color: black;
+  padding-left: 200px;
+  padding-right: 200px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-bottom: 0;
+}
+
+.registerTextBox {
+  margin-left: 30px;
+  margin-right: 30px;
+  border: 2px solid black;
+  font-size: 25px;
+  margin-bottom: 25px;
+  margin-top: 5px;
+  text-align: center;
+}
+#registerButton {
+  color: white;
+  background-color: black;
+  border-radius: 5px;
+  font-size: 25px;
+  padding: 5px;
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+#loginLink {
+  padding-bottom: 25px;
+  font-size: 25px;
+}
+#addPost-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+  }
+  
+  #addPostBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid black;
+    padding-left: 132px;
+    padding-right: 132px;
+  }
+  
+  #addPostTitle {
+    font-size: 75px;
     color: white;
-    display: flex;
-    align-items: center;
-    flex-grow: 1;
-    max-height: 10%;
-    min-height: 40px;
-}
-
-.register-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.register-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-input {
-    padding: 5px 5px;
-    margin: 10px 0;
-}
-
-nav{
-    display: flex;
-    flex-direction: row;
-    
-}
-
-.navButton{
-color: white;
-text-decoration: none;
-text-transform: uppercase;
-font-size: x-large;
-margin-left: 25px;
-margin-right: 25px;
-}
-#login-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-#loginBox{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-#postBox{
-    border: none;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px -2px black;
-    background-color: rgb(230, 230, 230);
-}
-#postHeader{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    font-size: 100px;
-}
+    background-color: black;
+    padding-left: 400px;
+    padding-right: 400px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-bottom: 0;
+  }
+  
+  .addPostTextBox {
+    width: 757px;
+    margin-left: 30px;
+    margin-right: 30px;
+    border: 2px solid black;
+    font-size: 25px;
+    margin-bottom: 25px;
+    margin-top: 5px;
+    text-align: center;
+  }
+  #addPostButton {
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    font-size: 25px;
+    padding: 5px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+  }
+  #goBackLink {
+    padding-bottom: 25px;
+    font-size: 25px;
+  }
+  

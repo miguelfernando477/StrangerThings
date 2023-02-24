@@ -38,17 +38,15 @@ function Login() {
 
   return (
     <div id="login-container">
-      <h1>Log In</h1>
+      <h1 id="logInTitle">Log In</h1>
       <form
         id="loginBox"
         onSubmit={(e) => {
           e.preventDefault();
           sendLoginToDatabase(username, password);
         }}
-      >
-        <label>
-          Username:
-          <input
+      >    <h1>Username</h1>
+          <input className="loginTextBox"
             name="username"
             type="text"
             value={username}
@@ -59,11 +57,8 @@ function Login() {
               setUsername(e.target.value);
             }}
           />
-        </label>
-
-        <label>
-          Password:
-          <input
+          <h1>Password</h1>
+          <input className="loginTextBox"
             name="password"
             type="text"
             value={password}
@@ -74,9 +69,8 @@ function Login() {
               setPassword(e.target.value);
             }}
           />
-        </label>
-        <button type="submit">LOG IN</button>
-        <Link to="../register">Don't have an account?</Link>
+        <button id="loginButton" type="submit">LOG IN</button>
+        <Link id="registerLink" to="../register">Don't have an account? Sign Up Here!</Link>
       </form>
     </div>
   );

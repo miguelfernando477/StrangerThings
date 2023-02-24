@@ -54,14 +54,17 @@ const AllPosts = () => {
 
   return (
     <div id="all-post">
-      <h1 id="postHeader">Posts</h1>
-      <input
+   
+      <h1 id="postHeader">Posts
+      <input id="searchBox"
         type="text"
-        placeholder="Search"
+        placeholder="Search Posts"
         value={searchTerm}
         onChange={searchHandle}
       />
-      <Link to="new-post">(Add Post)</Link>
+      <Link id="new-post-button" to="new-post">(Add Post)</Link>
+      </h1>
+      
       {postsToDisplay.length
         ? postsToDisplay.map((post, idx) => {
             return (
@@ -71,9 +74,6 @@ const AllPosts = () => {
                 <h3>Price: {post.price}</h3>
                 <h3>Seller: {post.author.username}</h3>
                 <h3>Location: {post.location}</h3>
-                <Link to={`${post._id}`}>
-                  <button>View</button>
-                </Link>
                 {post.isAuthor ? (
                   <div>
                     <button onClick={() => deletePostFromDOM(post._id, idx)}>

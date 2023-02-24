@@ -28,7 +28,8 @@ const Profile = () => {
 
   return (
     <div>
-      <h1>My Post</h1>
+      <h1 className="profileHeaders" id="welcomeUser">Welcome {localStorage.getItem("username")}</h1>
+      <h1 className="profileHeaders">My Post</h1>
       <div>
         {profilePost.length
           ? profilePost.map((post, idx) => {
@@ -44,15 +45,16 @@ const Profile = () => {
           : null}
       </div>
       <div>
-        <h1>Messages From Me</h1>
+        <h1 className="profileHeaders">Messages From Me</h1>
         {messages.length
           ? messages.map((message, idx) => {
               return (
                 message.fromUser.username === localStorage.getItem('username') ?
                 <div id="messageBox" key={idx}>
-                    <h3>Post: {message.post.title}</h3>
-                    <h4>From: {message.fromUser.username}</h4>
-                  <h4>Message: {message.content}</h4>
+                    <h1>Post: {message.post.title}</h1>
+                    <h2>Message: {message.content}</h2>
+                    <h3>To: {message.post.author.username}</h3>
+                    <h3>From: Me</h3>
 
                 </div> : null
               );
@@ -60,16 +62,16 @@ const Profile = () => {
           : null}
       </div>
       <div>
-        <h1>Messages To Me</h1>
+        <h1 className="profileHeaders">Messages To Me</h1>
         {messages.length
           ? messages.map((message, idx) => {
               return (
                 message.fromUser.username !== localStorage.getItem('username') ?
                 <div id="messageBox" key={idx}>
-                    <h3>Post: {message.post.title}</h3>
-                    <h4>From: {message.fromUser.username}</h4>
-                  <h4>Message: {message.content}</h4>
-
+                    <h1>Post: {message.post.title}</h1>
+                    <h2>Message: {message.content}</h2>
+                    <h3>From: {message.fromUser.username}</h3>
+                    <h3>To: Me</h3>
                 </div> : null
               );
             })

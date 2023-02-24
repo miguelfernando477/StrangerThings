@@ -20,6 +20,7 @@ function NewPost() {
         location
       );
       const result = await newPost(title, description, price, location);
+      console.log(result)
       localStorage.setItem(
         result.title,
         result.description,
@@ -30,22 +31,27 @@ function NewPost() {
       setNewDescription("");
       setNewPrice("");
       setNewLocation("");
-      navigate("../");
+      result.success ? 
+      (alert("Post Added!"), navigate("/")) :(alert("Unauthorized users cannot add post, please Log In") ,
+      navigate("/login"));
     } catch (error) {
       console.log(error);
     }
   }
 
   return (
+
+    <div id="addPost-container">
+      <h1 id="addPostTitle">Add Post</h1>
     <form
+     id="addPostBox"
       onSubmit={(event) => {
         event.preventDefault();
         sendPost(newTitle, newDescription, newPrice, newLocation);
       }}
     >
-      <label>
-        Title:
-        <input
+  <h1>Item</h1>
+        <input className="addPostTextBox"
           name="title"
           type="text"
           required
@@ -54,10 +60,8 @@ function NewPost() {
             setNewTitle(event.target.value);
           }}
         />
-      </label>
-      <label>
-        Description:
-        <input
+  <h1>Description</h1>
+        <input className="addPostTextBox"
           name="description"
           type="text"
           required
@@ -66,10 +70,8 @@ function NewPost() {
             setNewDescription(event.target.value);
           }}
         />
-      </label>
-      <label>
-        Price:
-        <input
+    <h1>Price</h1>
+        <input className="addPostTextBox"
           name="price"
           type="number"
           required
@@ -78,21 +80,21 @@ function NewPost() {
             setNewPrice(event.target.value);
           }}
         />
-      </label>
-      <label>
-        Location:
-        <input
+   <h1>Location</h1>
+        <input className="addPostTextBox"
           name="location"
           type="text"
+          placeholder="optional"
           value={newLocation}
           onChange={(event) => {
             setNewLocation(event.target.value);
           }}
         />
-      </label>
-      <button type="submit">Submit</button>
-      <Link to="/">Go back</Link>
+
+      <button id="addPostButton" type="submit">Submit</button>
+      <Link id="goBackLink" to="/">Go back</Link>
     </form>
+    </div>
   );
 }
 
