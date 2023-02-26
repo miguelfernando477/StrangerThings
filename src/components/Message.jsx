@@ -11,9 +11,10 @@ function Message(props) {
     try {
       const result = await newMessage(id, message);
       setMessage("");
-      result.success ?
-      alert("Message sent!") : (alert("Unauthorized users cannot send messages, please Log In") ,
-      navigate("/login"));
+      result.success
+        ? alert("Message sent!")
+        : (alert("Unauthorized users cannot send messages, please Log In"),
+          navigate("/login"));
     } catch (error) {
       console.log(error);
     }

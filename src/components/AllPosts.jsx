@@ -22,7 +22,7 @@ const AllPosts = () => {
       await deletePost(id);
       currentPosts.splice(idx, 1);
       setPost(currentPosts);
-      alert("Post has been deleted!")
+      alert("Post has been deleted!");
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -46,9 +46,8 @@ const AllPosts = () => {
   const postsToDisplay = searchTerm.length ? filteredPosts : posts;
 
   const searchHandle = (e) => {
-    setSearchTerm((e.target.value).toLowerCase());
+    setSearchTerm(e.target.value.toLowerCase());
   };
-
 
   useEffect(() => {
     getPosts();
@@ -56,17 +55,20 @@ const AllPosts = () => {
 
   return (
     <div id="all-post">
-   
-      <h1 id="postHeader">Posts
-      <input id="searchBox"
-        type="text"
-        placeholder="Search Posts"
-        value={searchTerm}
-        onChange={searchHandle}
-      />
-      <Link id="new-post-button" to="new-post">(Add Post)</Link>
+      <h1 id="postHeader">
+        Posts
+        <input
+          id="searchBox"
+          type="text"
+          placeholder="Search Posts"
+          value={searchTerm}
+          onChange={searchHandle}
+        />
+        <Link id="new-post-button" to="new-post">
+          (Add Post)
+        </Link>
       </h1>
-      
+
       {postsToDisplay.length
         ? postsToDisplay.map((post, idx) => {
             return (
@@ -81,7 +83,9 @@ const AllPosts = () => {
                     <button onClick={() => deletePostFromDOM(post._id, idx)}>
                       Delete
                     </button>
-                    <Link to={`edit-post/${post._id}`} state={post}><button >Edit</button></Link>
+                    <Link to={`edit-post/${post._id}`} state={post}>
+                      <button>Edit</button>
+                    </Link>
                   </div>
                 ) : (
                   <div>

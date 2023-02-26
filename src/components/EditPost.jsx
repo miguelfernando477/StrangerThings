@@ -6,10 +6,14 @@ function EditPost() {
   const location = useLocation();
   const navigate = useNavigate();
   let [newTitle, setNewTitle] = useState(location.state.title);
-  let [newDescription, setNewDescription] = useState(location.state.description);
+  let [newDescription, setNewDescription] = useState(
+    location.state.description
+  );
   let [newPrice, setNewPrice] = useState(location.state.price);
   let [newLocation, setNewLocation] = useState(location.state.location);
-  let [newWillDeliver, setNewWillDeliver] = useState(location.state.willDeliver);
+  let [newWillDeliver, setNewWillDeliver] = useState(
+    location.state.willDeliver
+  );
 
   async function changePost(
     id,
@@ -85,7 +89,7 @@ function EditPost() {
           name="price"
           type="number"
           required
-          min='0'
+          min="0"
           value={newPrice}
           onChange={(event) => {
             setNewPrice(event.target.value);

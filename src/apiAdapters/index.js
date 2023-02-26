@@ -15,19 +15,6 @@ export const getAllPostWithFetch = async () => {
     console.log(error);
   }
 };
-
-export const getIndividualPost = async (id) => {
-  try {
-    const response = await fetch(`${BASE}/${id}`, {
-      method: "GET",
-    });
-    const result = await response.json();
-    return result;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 export const registerAccount = async (username, password) => {
   try {
     const response = await fetch(

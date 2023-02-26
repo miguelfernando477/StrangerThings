@@ -85,7 +85,7 @@ function NewPost() {
           name="price"
           type="number"
           required
-          min='0'
+          min="0"
           value={newPrice}
           onChange={(event) => {
             setNewPrice(event.target.value);
@@ -104,7 +104,8 @@ function NewPost() {
         />
         <h1>
           Willing to Deliver?
-          <input id="willDeliverCheckbox"
+          <input
+            id="willDeliverCheckbox"
             name="willDeliver"
             type="checkbox"
             value={newWillDeliver}

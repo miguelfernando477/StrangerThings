@@ -31,31 +31,38 @@ function Login() {
           e.preventDefault();
           sendLoginToDatabase(username, password);
         }}
-      >    <h1>Username</h1>
-          <input className="loginTextBox"
-            name="username"
-            type="text"
-            value={username}
-            minLength="6"
-            required
-            onChange={(e) => {
-
-              setUsername(e.target.value);
-            }}
-          />
-          <h1>Password</h1>
-          <input className="loginTextBox"
-            name="password"
-            type="text"
-            value={password}
-            minLength="8"
-            required
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          />
-        <button id="loginButton" type="submit">LOG IN</button>
-        <Link id="registerLink" to="../register">Don't have an account? Sign Up Here!</Link>
+      >
+        {" "}
+        <h1>Username</h1>
+        <input
+          className="loginTextBox"
+          name="username"
+          type="text"
+          value={username}
+          minLength="6"
+          required
+          onChange={(e) => {
+            setUsername(e.target.value);
+          }}
+        />
+        <h1>Password</h1>
+        <input
+          className="loginTextBox"
+          name="password"
+          type="text"
+          value={password}
+          minLength="8"
+          required
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+        />
+        <button id="loginButton" type="submit">
+          LOG IN
+        </button>
+        <Link id="registerLink" to="../register">
+          Don't have an account? Sign Up Here!
+        </Link>
       </form>
     </div>
   );
@@ -63,5 +70,3 @@ function Login() {
 
 export default Login;
 
-// username: usertest12345
-// password: usertest1
